@@ -26,9 +26,8 @@
       var notFound = 0,
           keys = [];
 
-      for(var t = 0; t < tasks.length; t++) keys.push(tasks[t]);
-      for(var i = 0; i < keys.length; i++){
-        if(this.completedKeys.indexOf(keys[i]) === -1) notFound++;
+      for(var i = 0; i < tasks.length; i++){
+        if(this.completedKeys.indexOf(tasks[i]) === -1) notFound++;
       }
       if(notFound === 0) this.ready();
     };
