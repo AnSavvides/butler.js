@@ -6,9 +6,11 @@
 //
 (function(){
   Waitress = function(){
-    this.completed = new Array();
-    this.add = function(task){
-      this.completed.push(task);
+    this.completed = {};
+    this.completedKeys = [];
+    this.add = function(task, taskResponse){
+      this.completed[task] = taskResponse;
+      this.completedKeys.push(task);
     };
     this.when = function(tasks, callback){
       this.callback = callback;
@@ -18,15 +20,18 @@
       },50);
     };
     this.listenForAll = function(tasks){
-      var notFound = 0;
-      for(var i = 0; i < tasks.length; i++){
-        if(this.completed.indexOf(tasks[i]) == -1) notFound++;
+      var notFound = 0,
+          keys = [];
+
+      for(var t = 0; t < tasks.length; t++) keys.push(tasks[t]);
+      for(var i = 0; i < keys.length; i++){
+        if(this.completedKeys.indexOf(keys[i]) == -1) notFound++;
       }
       if(notFound == 0) this.ready();
     };
     this.ready = function(){
       clearInterval(this.i);
-      this.callback();
+      this.callback(this.completed);
     };
   };
 }).call(this);
