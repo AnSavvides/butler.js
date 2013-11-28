@@ -6,6 +6,9 @@
 //
 (function(){
   Waitress = function(){
+
+    "use strict";
+
     this.completed = {};
     this.completedKeys = [];
     this.add = function(task, taskResponse){
@@ -25,9 +28,9 @@
 
       for(var t = 0; t < tasks.length; t++) keys.push(tasks[t]);
       for(var i = 0; i < keys.length; i++){
-        if(this.completedKeys.indexOf(keys[i]) == -1) notFound++;
+        if(this.completedKeys.indexOf(keys[i]) === -1) notFound++;
       }
-      if(notFound == 0) this.ready();
+      if(notFound === 0) this.ready();
     };
     this.ready = function(){
       clearInterval(this.i);
