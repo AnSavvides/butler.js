@@ -12,7 +12,7 @@ $.ajax({
   type: "GET",
   url: "/api/notifications"
 }).done(function(response) {
-	bootup.add('notifications');
+    bootup.add('notifications');
 });
 
 $.ajax({
