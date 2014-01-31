@@ -5,7 +5,7 @@
 //  This project originally started as a fork of Waitress.js by Bjoern
 //  Zinssmeister (twitter.com/zinssmeister)
 //
-// butler.js may be freely distributed under the MIT license.
+//  butler.js may be freely distributed under the MIT license.
 //
 (function(){
     Butler = function() {
@@ -37,7 +37,7 @@
             }
             if(notFound === 0) this.ready();
         };
-        
+
         this.ready = function(){
             clearInterval(this.i);
             this.callback(this.completed);
